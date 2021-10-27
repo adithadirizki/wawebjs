@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <title>Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-lg-6">
+          <form id="form" class="my-4">
+            <div class="form-group">
+              <label for="nama">Nama Lengkap</label>
+              <input
+                name="nama"
+                type="text"
+                class="form-control"
+                id="nama"
+                placeholder="Masukkan nama lengkap"
+                value="John St"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                name="email"
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Masukkan alamat email"
+                value="johnst@gmail.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="pesan">Pesan</label>
+              <textarea
+                name="pesan"
+                id="pesan"
+                class="form-control"
+                cols="30"
+                rows="10"
+                placeholder="Tulis pesanmu disini..."
+              >
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus non, rem provident aperiam tenetur delectus officia adipisci culpa magnam. Ipsam, placeat laboriosam accusamus nihil dolorum cumque quisquam corrupti eius illo!</textarea
+              >
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim</button>
+          </form>
+        </div>
+        <div class="col-md-4 col-lg-6">
+          <div id="qrcode"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+          url: "http://localhost:5000/qrcode",
+          type: "get",
+          contentType: "application/json",
+          dataType: "json",
+          success: function (result) {
+            if (result.qrcode) {
+              $("#qrcode").html(`<img src="${result.qrcode}" alt="QR code" />`);
+            } else {
+              $("#qrcode").html(`<h5>${result.message}</h5>`);
+            }
+          },
+          error: function () {
+            // window.alert("Failed get QR code");
+          },
+        });
+
+        $("#form").on("submit", function (e) {
+          e.preventDefault();
+          const formData = $(this).serializeArray();
+          const data = {};
+
+          $.map(formData, function (item, index) {
+            data[item["name"]] = item["value"];
+          });
+
+          $.ajax({
+            url: "http://localhost:5000/form/upload",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(data),
+            success: function (result) {
+              const filename = result.filename;
+
+              console.log(result);
+
+              $.ajax({
+                url: "http://localhost:5000/send/media",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify({
+                  phone: "6287744508761",
+                  filename: filename,
+                  caption: "This is your file.",
+                }),
+                success: function () {
+                  window.alert("Sussess");
+                },
+                error: function () {
+                  window.alert("Failed", "Send");
+                },
+              });
+
+              return false;
+            },
+            error: function () {
+              window.alert("Failed", "Upload");
+            },
+          });
+
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>

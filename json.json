@@ -1,0 +1,124 @@
+{
+  "contacts": [
+    {
+      "groupMetadata": {
+        "id": {
+          "server": "g.us",
+          "user": "6285609836823-1635151312",
+          "_serialized": "6285609836823-1635151312@g.us"
+        },
+        "creation": 1635151312,
+        "owner": {
+          "server": "c.us",
+          "user": "6285609836823",
+          "_serialized": "6285609836823@c.us"
+        },
+        "restrict": false,
+        "announce": false,
+        "noFrequentlyForwarded": false,
+        "ephemeralDuration": 0,
+        "support": false,
+        "uniqueShortNameMap": {},
+        "participants": [
+          {
+            "id": {
+              "server": "c.us",
+              "user": "6287744508761",
+              "_serialized": "6287744508761@c.us"
+            },
+            "isAdmin": false,
+            "isSuperAdmin": false
+          },
+          {
+            "id": {
+              "server": "c.us",
+              "user": "6285609836823",
+              "_serialized": "6285609836823@c.us"
+            },
+            "isAdmin": true,
+            "isSuperAdmin": true
+          }
+        ],
+        "pendingParticipants": []
+      },
+      "id": {
+        "server": "g.us",
+        "user": "6285609836823-1635151312",
+        "_serialized": "6285609836823-1635151312@g.us"
+      },
+      "name": "Broadcast for me",
+      "isGroup": true,
+      "isReadOnly": false,
+      "unreadCount": 0,
+      "timestamp": 1635151312,
+      "archived": false,
+      "pinned": false,
+      "isMuted": false,
+      "muteExpiration": 0
+    },
+    {
+      "id": {
+        "server": "c.us",
+        "user": "6287744508761",
+        "_serialized": "6287744508761@c.us"
+      },
+      "name": "ADIT",
+      "isGroup": false,
+      "isReadOnly": false,
+      "unreadCount": 0,
+      "timestamp": 1635147566,
+      "archived": false,
+      "pinned": false,
+      "isMuted": false,
+      "muteExpiration": 0
+    },
+    {
+      "id": {
+        "server": "c.us",
+        "user": "6281911500445",
+        "_serialized": "6281911500445@c.us"
+      },
+      "name": "DANA Care",
+      "isGroup": false,
+      "isReadOnly": false,
+      "unreadCount": 0,
+      "timestamp": 1635034565,
+      "archived": false,
+      "pinned": false,
+      "isMuted": false,
+      "muteExpiration": 0
+    },
+    {
+      "id": {
+        "server": "c.us",
+        "user": "628881212888",
+        "_serialized": "628881212888@c.us"
+      },
+      "name": "Smartfren",
+      "isGroup": false,
+      "isReadOnly": false,
+      "unreadCount": 0,
+      "timestamp": 1635034272,
+      "archived": false,
+      "pinned": false,
+      "isMuted": false,
+      "muteExpiration": 0
+    },
+    {
+      "id": {
+        "server": "c.us",
+        "user": "628551000185",
+        "_serialized": "628551000185@c.us"
+      },
+      "name": "IM3 Ooredoo",
+      "isGroup": false,
+      "isReadOnly": false,
+      "unreadCount": 0,
+      "timestamp": 1634435865,
+      "archived": false,
+      "pinned": false,
+      "isMuted": false,
+      "muteExpiration": 0
+    }
+  ]
+}
